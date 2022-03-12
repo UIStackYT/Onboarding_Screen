@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
             OnboardingDemoTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize()) {
-                    window.statusBarColor = ContextCompat.getColor(this, R.color.colorBlue)
+
                     val items = ArrayList<OnBoardingData>()
 
                     items.add(
@@ -54,7 +54,6 @@ class MainActivity : ComponentActivity() {
                             "Hmmm, Healthy Food",
                             "A variety of healthy foods made by the best chefs. Ingredients are easy to find. all delicious flavors can only be found at cookbunda",
                             backgroundColor = Color(0xFF0189C5),
-                            statusBarColor = Color(0xFF00B5EA),
                             mainColor = Color(0xFF00B5EA)
                         )
                     )
@@ -65,7 +64,6 @@ class MainActivity : ComponentActivity() {
                             "Fresh Drinks, Stay Fresh",
                             "Not only food. we provide clear healthy drink options for you. Fresh taste always accompanies you",
                             backgroundColor = Color(0xFFE4AF19),
-                            statusBarColor = Color(0xFFF7D044),
                             mainColor = ColorYellow
                         )
                     )
@@ -76,7 +74,6 @@ class MainActivity : ComponentActivity() {
                             "Let’s Cooking",
                             "Are you ready to make a dish for your friends or family? create an account and cook",
                             backgroundColor = Color(0xFF96E172),
-                            statusBarColor = Color(0xFF83D15F),
                             mainColor = ColorGreen
                         )
                     )
@@ -93,17 +90,7 @@ class MainActivity : ComponentActivity() {
                     OnBoardingPager(
                         item = items, pagerState = pagerState, modifier = Modifier
                             .fillMaxWidth()
-                            .background(color = ColorBlue),
-                        onPageChanged = {
-                            Log.d("pager page", "" + it)
-                            val statusBarColor: Int = when (it) {
-                                0 -> R.color.colorBlue
-                                1 -> R.color.colorYellow
-                                2 -> R.color.colorGreen
-                                else -> R.color.colorBlue
-                            }
-                            window.statusBarColor = ContextCompat.getColor(this, statusBarColor)
-                        }
+                            .background(color = ColorBlue)
                     )
 
                 }
@@ -118,10 +105,8 @@ class MainActivity : ComponentActivity() {
 fun OnBoardingPager(
     item: List<OnBoardingData>,
     pagerState: PagerState,
-    modifier: Modifier = Modifier,
-    onPageChanged: (index: Int) -> Unit
+    modifier: Modifier = Modifier
 ) {
-    onPageChanged(pagerState.currentPage)
 
     Box(modifier = modifier) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {

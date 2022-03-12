@@ -7,6 +7,5 @@ data class OnBoardingData(
     val image: Int, val title: String,
     val desc: String,
     val backgroundColor:Color,
-    val statusBarColor: Color,
     val mainColor:Color = ColorBlue
 )
